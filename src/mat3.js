@@ -167,17 +167,12 @@ mat3.set = function(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
  * @param {mat3} out the receiving matrix
  * @returns {mat3} out
  */
-mat3.identity = function(out) {
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 1;
-    out[5] = 0;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 1;
-    return out;
+mat3.identity = function() {
+    return [
+        1, 0, 0,
+        0, 1, 0,
+        0, 0, 1
+    ]
 };
 
 /**
@@ -187,9 +182,11 @@ mat3.identity = function(out) {
  * @param {mat3} a the source matrix
  * @returns {mat3} out
  */
-mat3.transpose = function(out, a) {
+mat3.transpose = function(out, a) 
+{
     // If we are transposing ourselves we can skip a few steps but have to cache some values
-    if (out === a) {
+    if (out === a) 
+    {
         var a01 = a[1], a02 = a[2], a12 = a[5];
         out[1] = a[3];
         out[2] = a[6];
@@ -219,7 +216,8 @@ mat3.transpose = function(out, a) {
  * @param {mat3} a the source matrix
  * @returns {mat3} out
  */
-mat3.invert = function(out, a) {
+mat3.invert = function(out, a) 
+{
     var a00 = a[0], a01 = a[1], a02 = a[2],
         a10 = a[3], a11 = a[4], a12 = a[5],
         a20 = a[6], a21 = a[7], a22 = a[8],

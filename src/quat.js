@@ -205,13 +205,16 @@ quat.setAxisAngle = function(out, axis, rad) {
  * @param  {quat} q     Quaternion to be decomposed
  * @return {Number}     Angle, in radians, of the rotation
  */
-quat.getAxisAngle = function(out_axis, q) {
+quat.getAxisAngle = function(out_axis, q) 
+{
     var rad = Math.acos(q[3]) * 2.0;
     var s = Math.sin(rad / 2.0);
+    var s1 = 1 / s;
+
     if (s != 0.0) {
-        out_axis[0] = q[0] / s;
-        out_axis[1] = q[1] / s;
-        out_axis[2] = q[2] / s;
+        out_axis[0] = q[0] * s1;
+        out_axis[1] = q[1] * s1;
+        out_axis[2] = q[2] * s1;
     } else {
         // If s is zero, return any axis (no rotation - axis does not matter)
         out_axis[0] = 1;

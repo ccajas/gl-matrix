@@ -18,14 +18,19 @@ module.exports = function(grunt)
 
 			js: {
 				files: { 'glmatrix.js': [
-					'src/gl-matrix/*.js'
+					'src/common.js',
+					'src/mat3.js',
+					'src/mat4.js',
+					'src/quat.js',
+					'src/vec3.js',
+					'src/vec4.js'
 				]}
 			}
 		},
 
 		watchfiles: {
 			first: {
-				files: ['src/gl-matrix/*.js'],
+				files: ['src/*.js'],
 				tasks: ['uglify']
 			}
 		}
